@@ -7,7 +7,7 @@ import {
   HttpResponse,
 } from "@core/infra/HttpResponse";
 import { Request } from "express";
-import { AccountAlreadyExistsError } from "../errors/AccountAlreadyExistsError";
+import { AccountAlreadyExistsError } from "../../errors/AccountAlreadyExistsError";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 type CreateUserControllerRequest = {

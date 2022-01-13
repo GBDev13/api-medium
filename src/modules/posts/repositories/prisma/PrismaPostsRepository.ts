@@ -39,7 +39,16 @@ export class PrismaPostsRepository implements IPostsRepository {
             email: true,
           },
         },
-        comments: true,
+        comments: {
+          select: {
+            content: true,
+            author: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
       },
     });
 

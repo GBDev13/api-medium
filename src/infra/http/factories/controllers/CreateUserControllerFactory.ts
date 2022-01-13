@@ -1,5 +1,5 @@
-import { CreateUserController } from "@modules/accounts/createUser/CreateUserController";
-import { CreateUserUseCase } from "@modules/accounts/createUser/CreateUserUseCase";
+import { CreateUserController } from "@modules/accounts/useCases/createUser/CreateUserController";
+import { CreateUserUseCase } from "@modules/accounts/useCases/createUser/CreateUserUseCase";
 import { PrismaUsersRepository } from "@modules/accounts/repositories/prisma/PrismaUsersRepository";
 
 export function makeCreateUserController() {

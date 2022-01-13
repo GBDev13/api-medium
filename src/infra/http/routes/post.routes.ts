@@ -6,6 +6,7 @@ import { makeEnsureAuthenticatedMiddleware } from "../factories/middlewares/Ensu
 
 import { makeCreatePostController } from "../factories/controllers/CreatePostControllerFactory";
 import { makeGetAllPostsController } from "../factories/controllers/GetAllPostsControllerFactory";
+import { makeCreateCommentController } from "../factories/controllers/CreateCommentControllerFactory";
 
 const postRoutes = Router();
 
@@ -14,5 +15,6 @@ postRoutes.get("/", adaptRoute(makeGetAllPostsController()));
 postRoutes.use(adaptMiddleware(makeEnsureAuthenticatedMiddleware()));
 
 postRoutes.post("/", adaptRoute(makeCreatePostController()));
+postRoutes.post("/comment/:postId", adaptRoute(makeCreateCommentController()));
 
 export { postRoutes };

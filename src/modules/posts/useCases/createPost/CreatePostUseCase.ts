@@ -1,15 +1,15 @@
 import { Either, left, right } from "@core/logic/Either";
-import { AuthorId } from "../domain/post/authorId";
-import { Content } from "../domain/post/content";
-import { InvalidAuthorIdError } from "../domain/post/errors/InvalidAuthorIdError";
-import { InvalidContentError } from "../domain/post/errors/InvalidContentError";
-import { InvalidSlugError } from "../domain/post/errors/InvalidSlugError";
-import { InvalidTitleError } from "../domain/post/errors/InvalidTitleError";
-import { Post } from "../domain/post/post";
-import { Slug } from "../domain/post/slug";
-import { Title } from "../domain/post/title";
-import { ICreatePostDTO } from "../dtos/ICreatePostDTO";
-import { IPostsRepository } from "../repositories/IPostsRepository";
+import { AuthorId } from "../../domain/post/authorId";
+import { Content } from "../../domain/post/content";
+import { InvalidAuthorIdError } from "../../domain/post/errors/InvalidAuthorIdError";
+import { InvalidContentError } from "../../domain/post/errors/InvalidContentError";
+import { InvalidSlugError } from "../../domain/post/errors/InvalidSlugError";
+import { InvalidTitleError } from "../../domain/post/errors/InvalidTitleError";
+import { Post } from "../../domain/post/post";
+import { Slug } from "../../domain/post/slug";
+import { Title } from "../../domain/post/title";
+import { ICreatePostDTO } from "../../dtos/ICreatePostDTO";
+import { IPostsRepository } from "../../repositories/IPostsRepository";
 
 type CreatePostUseCaseResponse = Either<
   | InvalidSlugError

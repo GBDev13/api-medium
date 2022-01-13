@@ -1,5 +1,5 @@
-import { CreatePostController } from "@modules/posts/createPost/CreatePostController";
-import { CreatePostUseCase } from "@modules/posts/createPost/CreatePostUseCase";
+import { CreatePostController } from "@modules/posts/useCases/createPost/CreatePostController";
+import { CreatePostUseCase } from "@modules/posts/useCases/createPost/CreatePostUseCase";
 import { PrismaPostsRepository } from "@modules/posts/repositories/prisma/PrismaPostsRepository";
 
 export function makeCreatePostController() {

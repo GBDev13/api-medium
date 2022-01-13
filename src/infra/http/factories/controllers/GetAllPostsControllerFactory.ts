@@ -1,5 +1,5 @@
-import { GetAllPostsController } from "@modules/posts/getAllPosts/GetAllPostsController";
-import { GetAllPostsUseCase } from "@modules/posts/getAllPosts/GetAllPostsUseCase";
+import { GetAllPostsController } from "@modules/posts/useCases/getAllPosts/GetAllPostsController";
+import { GetAllPostsUseCase } from "@modules/posts/useCases/getAllPosts/GetAllPostsUseCase";
 import { PrismaPostsRepository } from "@modules/posts/repositories/prisma/PrismaPostsRepository";
 
 export function makeGetAllPostsController() {

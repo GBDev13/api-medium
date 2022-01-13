@@ -1,14 +1,14 @@
 import { Either, left, right } from "@core/logic/Either";
-import { Email } from "../domain/user/email";
-import { InvalidEmailError } from "../domain/user/errors/InvalidEmailError";
-import { InvalidNameError } from "../domain/user/errors/InvalidNameError";
-import { InvalidPasswordLengthError } from "../domain/user/errors/InvalidPasswordLengthError";
-import { Name } from "../domain/user/name";
-import { Password } from "../domain/user/password";
-import { User } from "../domain/user/user";
-import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
-import { AccountAlreadyExistsError } from "../errors/AccountAlreadyExistsError";
-import { IUsersRepository } from "../repositories/IUsersRepository";
+import { Email } from "../../domain/user/email";
+import { InvalidEmailError } from "../../domain/user/errors/InvalidEmailError";
+import { InvalidNameError } from "../../domain/user/errors/InvalidNameError";
+import { InvalidPasswordLengthError } from "../../domain/user/errors/InvalidPasswordLengthError";
+import { Name } from "../../domain/user/name";
+import { Password } from "../../domain/user/password";
+import { User } from "../../domain/user/user";
+import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { AccountAlreadyExistsError } from "../../errors/AccountAlreadyExistsError";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 type CreateUserUseCaseResponse = Either<
   | AccountAlreadyExistsError

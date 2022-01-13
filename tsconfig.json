@@ -8,7 +8,8 @@
     "paths": {
       "@modules/*": ["modules/*"],
       "@infra/*": ["infra/*"],
-      "@core/*": ["core/*"]
+      "@core/*": ["core/*"],
+      "@config/*": ["config/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

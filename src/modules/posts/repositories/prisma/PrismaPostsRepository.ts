@@ -1,6 +1,7 @@
 import { prisma } from "@infra/prisma/client";
-import { Post } from "@modules/posts/domain/post/post";
 import { PostMapper } from "@modules/posts/mappers/PostMapper";
+import { Post } from "@modules/posts/domain/post/post";
+import { Post as PostClient } from "@prisma/client";
 import { IPostsRepository } from "../IPostsRepository";
 
 export class PrismaPostsRepository implements IPostsRepository {
@@ -10,15 +11,38 @@ export class PrismaPostsRepository implements IPostsRepository {
     await prisma.post.create({ data });
   }
 
-  async findBySlug(slug: string): Promise<Post> {
-    const post = await prisma.post.findUnique({
-      where: { slug },
+  async findBySlug(slug: string): Promise<PostClient[]> {
+    const posts = await prisma.post.findMany({
+      where: {
+        slug: {
+          startsWith: slug,
+        },
+      },
+      orderBy: {
+        created_at: "desc",
+      },
     });
 
-    if (!post) {
+    if (!posts) {
       return null;
     }
 
-    return PostMapper.toDomain(post);
+    return posts;
+  }
+
+  async findAll(): Promise<PostClient[]> {
+    const posts = await prisma.post.findMany({
+      include: {
+        author: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+        comments: true,
+      },
+    });
+
+    return posts;
   }
 }

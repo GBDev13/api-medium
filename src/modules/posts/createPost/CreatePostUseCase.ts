@@ -50,20 +50,29 @@ export class CreatePostUseCase {
     }
 
     const postAlreadyExists = await this.postsRepository.findBySlug(
-      String(slugOrError.value)
+      String(slugOrError.value.value)
     );
 
-    if (postAlreadyExists) {
-      const stringSlug = String(slugOrError.value);
+    const results = postAlreadyExists.length;
+
+    if (results > 0) {
+      const stringSlug = String(postAlreadyExists[0].slug);
 
       const splitAt = (index: number, value: string) => [
         value.slice(0, index),
         value.slice(index),
       ];
 
-      const cuttedSlug = splitAt(stringSlug.length - 1, stringSlug);
+      const cuttedSlug = splitAt(
+        stringSlug.length - (results === 1 ? 0 : 1),
+        stringSlug
+      );
 
-      slugOrError = Slug.create(cuttedSlug[0] + (Number(cuttedSlug[1]) + 1));
+      const notNumber = isNaN(Number(cuttedSlug[1]));
+
+      let number = notNumber ? 1 : Number(cuttedSlug[1]) + 1;
+
+      slugOrError = Slug.create(`${cuttedSlug[0]}${number}`);
 
       if (slugOrError.isLeft()) {
         return left(slugOrError.value);

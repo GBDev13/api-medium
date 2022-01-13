@@ -8,7 +8,7 @@ export const adaptRoute = (controller: Controller) => {
       ...request.body,
       ...request.params,
       ...request.query,
-      // userId: request.userId TODO,
+      userId: request.userId,
     };
 
     const httpResponse = await controller.handle(requestData);

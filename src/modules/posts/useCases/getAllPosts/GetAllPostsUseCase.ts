@@ -1,12 +1,12 @@
 import { IPostsRepository } from "../../repositories/IPostsRepository";
 import { Post } from "@prisma/client";
 
-type GetAllSendersResponse = Post[];
+type GetAllPostsResponse = Post[];
 
 export class GetAllPostsUseCase {
   constructor(private postsRepository: IPostsRepository) {}
 
-  async execute(): Promise<GetAllSendersResponse> {
+  async execute(): Promise<GetAllPostsResponse> {
     const posts = await this.postsRepository.findAll();
 
     return posts;

@@ -1,5 +1,6 @@
 import { prisma } from "@infra/prisma/client";
 import { User } from "@modules/accounts/domain/user/user";
+import { IGetAllUsersResponse } from "@modules/accounts/dtos/IGetAllUsersResponse";
 import { UserMapper } from "@modules/accounts/mappers/UserMapper";
 import { IUsersRepository } from "../IUsersRepository";
 
@@ -20,5 +21,37 @@ export class PrismaUsersRepository implements IUsersRepository {
     }
 
     return UserMapper.toDomain(user);
+  }
+
+  async findAll(): Promise<IGetAllUsersResponse[]> {
+    const data = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        followers: {
+          select: {
+            follower: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
+        following: {
+          select: {
+            follower: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return data;
   }
 }
